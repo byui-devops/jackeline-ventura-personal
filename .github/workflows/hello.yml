@@ -1,4 +1,4 @@
-name: Jackeline CI
+name: Jackeline 
 
 on:
   push:
