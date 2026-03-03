@@ -34,12 +34,5 @@ jobs:
   dora:
     needs: build-test-lint
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
-      - name: DevOps Metrics (DORA)
-        uses: mikepenz/action-devops-metrics@v3
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+      - uses: actions/checkout@v4
