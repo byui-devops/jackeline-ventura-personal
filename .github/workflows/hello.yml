@@ -39,7 +39,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Generate DORA Metrics
-        uses: alexellis/devops-metrics-action@v1
+      - name: DevOps Metrics (DORA)
+        uses: mikepenz/action-devops-metrics@v3
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.GITHUB_TOKEN }}
