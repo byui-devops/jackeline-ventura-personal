@@ -43,8 +43,8 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: DORA Metrics
-        uses: devops-actions/devops-metrics@v1
+      - name: Compute DORA Metrics
+        uses: devops-actions/devops-metrics-from-github@v1
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
 
