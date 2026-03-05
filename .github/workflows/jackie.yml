@@ -36,18 +36,18 @@ jobs:
         run: |
           pytest
 
-  dora:
-    needs: build-test-lint
-    runs-on: ubuntu-latest
+dora:
+  needs: build-test-lint
+  runs-on: ubuntu-latest
 
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
+  steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
 
-      - name: Compute DORA Metrics
-        uses: devops-actions/devops-metrics@v1
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
+    - name: Generate DORA placeholder
+      run: |
+        echo "DORA Metrics Placeholder"
+        echo "Deployment frequency, lead time, MTTR, and change failure rate would be calculated here."
 
   deploy:
     needs: build-test-lint
