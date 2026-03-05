@@ -14,40 +14,31 @@ jobs:
         working-directory: jackeline_ventura
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-      - name: Setup Python
-        uses: actions/setup-python@v5
+      - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
 
-      - name: Install dependencies
-        run: |
+      - run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
           pip install pytest flake8
 
-      - name: Lint code
+      - run: flake8 .
+
+      - run: pytest
+
+  dora:
+    needs: build-test-lint
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Generate DORA metrics
         run: |
-          flake8 .
-
-      - name: Run tests
-        run: |
-          pytest
-
-dora:
-  needs: build-test-lint
-  runs-on: ubuntu-latest
-
-  steps:
-    - name: Checkout repository
-      uses: actions/checkout@v4
-
-    - name: Generate DORA placeholder
-      run: |
-        echo "DORA Metrics Placeholder"
-        echo "Deployment frequency, lead time, MTTR, and change failure rate would be calculated here."
+          echo "DORA metrics placeholder"
 
   deploy:
     needs: build-test-lint
